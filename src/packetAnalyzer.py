@@ -52,5 +52,5 @@ def examinePacket(pkt):
 
 
 def startCapture():
-    capture = pyshark.LiveCapture(interface='en0', only_summaries=False)    #creates a new pyshark object with a specific interface and desired parameters 
+    capture = pyshark.LiveCapture(interface='wlan1', only_summaries=False)    #creates a new pyshark object with a specific interface and desired parameters 
     capture.apply_on_packets(examinePacket)                                 #sends every packet to the examinePAcket function above to examine them
