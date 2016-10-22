@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 
 trigger = True
 global endTime
-endTime = int(time.time()) + 1400
+#endTime = int(time.time()) + 1400
 
 d = {}
 
