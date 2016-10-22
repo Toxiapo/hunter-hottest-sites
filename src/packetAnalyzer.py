@@ -46,11 +46,12 @@ def examinePacket(pkt):
         print "-------------------------------------------------------"
 
 
-    if(int(time.time()) % 11 == 0):
-        print "Writting to json"
-        writeJson(d)
+    # if(int(time.time()) % 11 == 0):
+    #     print "Writting to json"
+    #     writeJson(d)
+    #     break
 
 
 def startCapture():
-    capture = pyshark.LiveCapture(interface='wlan1', only_summaries=False)    #creates a new pyshark object with a specific interface and desired parameters 
+    capture = pyshark.LiveCapture(interface='en0', only_summaries=False)    #creates a new pyshark object with a specific interface and desired parameters 
     capture.apply_on_packets(examinePacket)                                 #sends every packet to the examinePAcket function above to examine them

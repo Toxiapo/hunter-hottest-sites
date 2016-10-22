@@ -2,9 +2,9 @@
 import socket               # Import socket module
 import os
 import time
-import netifaces as ni
-ni.ifaddresses('eth0')
-ip = ni.ifaddresses('eth0')[2][0]['addr']
+# import netifaces as ni
+# ni.ifaddresses('eth0')
+# ip = ni.ifaddresses('eth0')[2][0]['addr']
 
 
 host = '192.168.1.150'  # Get local machine name
@@ -24,7 +24,7 @@ def startSend(s):
 def client():
     try:
         s = socket.socket()
-        s.bind((ip,'0'))
+        s.bind((ip,0))
         s.connect((host, port))
         startSend(s)
     except socket.error:

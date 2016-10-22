@@ -11,8 +11,8 @@ def main():
     #time.sleep(1500)   #Time to run capture
     
 
-    p.terminate()
-    p.join()
-    print "Packet pacture terminated"
+    #p.terminate()
+    #p.join()
+    #print "Packet pacture terminated"
 
 main()
