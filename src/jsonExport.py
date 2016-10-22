@@ -3,11 +3,11 @@ import json
 from sites import *
 import time
 import socket
+from sendData import *
 
 
 
 def writeJson(d):  #not yet implemented
-
 	with open('data.json', 'w') as fp:
 		fp.write("[")
 		for key in d:
@@ -17,6 +17,7 @@ def writeJson(d):  #not yet implemented
 			fp.write('\n')
 		fp.write("]")
 	fp.close()
+	client()
 
 	# s = socket.socket()         # Create a socket object
 	# host = '146.95.219.133' # Get local machine name

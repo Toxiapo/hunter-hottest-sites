@@ -42,7 +42,7 @@ class SiteData:
         self.timeBucket[x] += 1
 
     def getJSON(self):
-        jsonD = {self.siteName: {"totalPackets": self.trafficCount, "trafficLength": sizeof_fmt(self.trafficSize), "timeInterval" : "10 - 11", "IPcount": len(self.ips)}}
+        jsonD = {"Name": self.siteName, "trafficLength": self.trafficSize/100} 
         return jsonD
 
     def __str__(self):

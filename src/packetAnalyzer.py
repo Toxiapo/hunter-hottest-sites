@@ -9,8 +9,7 @@ from datetime import datetime, timedelta
 
 trigger = True
 global endTime
-endTime = int(time.time()) + 10
-
+endTime = int(time.time()) + 1400
 
 d = {}
 
@@ -47,10 +46,9 @@ def examinePacket(pkt):
         print "-------------------------------------------------------"
 
 
-    if(int(time.time()) > endTime and trigger == True):
+    if(int(time.time()) % 11 == 0):
         print "Writting to json"
         writeJson(d)
-        trigger = False
 
 
 def startCapture():
