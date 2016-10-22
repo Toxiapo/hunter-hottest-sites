@@ -46,10 +46,13 @@ def examinePacket(pkt):
         print "-------------------------------------------------------"
 
 
-    # if(int(time.time()) % 11 == 0):
-    #     print "Writting to json"
-    #     writeJson(d)
-    #     break
+    if(int(time.time()) % 11 == 0 and trigger == True):
+        print "Writting to json"
+        writeJson(d)
+        trigger = False
+        
+    if(int(time.time()) % 12 == 0):
+        trigger = True
 
 
 def startCapture():

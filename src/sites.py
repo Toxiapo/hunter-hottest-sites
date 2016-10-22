@@ -1,4 +1,6 @@
 
+import random
+
 class SiteData:
     def __init__(self, site):
         self.siteName = site
@@ -12,6 +14,8 @@ class SiteData:
                 self.timeBucket[str(i)] = 0
         self.trafficCount = 0
         self.jsonD = {}
+        cc = lambda: random.randint(0,255)
+        self.color = ('#%02X%02X%02X' % (cc(),cc(),cc()))
 
 
     def getCount(self):                 #get the total number of packets
@@ -42,7 +46,7 @@ class SiteData:
         self.timeBucket[x] += 1
 
     def getJSON(self):
-        jsonD = {"Name": self.siteName, "trafficLength": self.trafficSize/100} 
+        jsonD = {"color": self.color, "r": self.trafficSize, "name": self.siteName} 
         return jsonD
 
     def __str__(self):
