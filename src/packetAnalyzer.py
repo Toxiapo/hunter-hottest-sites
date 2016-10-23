@@ -7,6 +7,9 @@ from jsonExport import *
 import time
 from datetime import datetime, timedelta
 
+global Max
+Max = 0
+
 trigger = True
 global endTime
 #endTime = int(time.time()) + 1400
@@ -15,6 +18,7 @@ d = {}
 
 def examinePacket(pkt):
     global trigger
+    global Max
     try:
         destIP = str(pkt.ip.dst)    #strips the destination of the packet (in IP format)
         srcIP = str(pkt.ip.src)     #strips the source of the packet (IP of device)
@@ -27,12 +31,24 @@ def examinePacket(pkt):
             destIP = socket.gethostbyaddr(destIP)[0]    #Converts IP to hostname (if it exists)
             destIP = destIP.split('.',destIP.count('.')-1)[-1]
 
+            if(destIP == "akamaitechnologies.com" or destIP == "1e100.net" or destIP == "broadcasthost"):
+            	return
+
             if not destIP in d:                         #Creates a new instance of the class, adds it to a dictionary (d), and the hostname is the key
                 d[destIP] = SiteData(destIP)
+                d[destIP].setMax(Max)
 
             d[destIP].addIP(srcIP)
             d[destIP].incrementCount()
             d[destIP].incrementTraffic(traffic)
+            d[destIP].setMax(Max)
+
+            if(Max < d[destIP].getSize()):
+            	Max = d[destIP].getSize()
+            	for key in d:
+            		d[key].setMax(Max)
+            	
+            
 
         except socket.herror as e:
             pass
@@ -40,10 +56,14 @@ def examinePacket(pkt):
     except AttributeError as e:
         pass
 
-    for key in d:
-        print d[key]
-        print "total sites seen: ", len(d)
-        print "-------------------------------------------------------"
+
+    #print Max
+
+    # for key in d:
+    #     print "traffic size is ", d[key].getSize()
+    #     print "Max size is ", d[key].getMax()
+        # print "total sites seen: ", len(d)
+        # print "-------------------------------------------------------"
 
 
     if(int(time.time()) % 11 == 0 and trigger == True):

@@ -2,12 +2,12 @@
 import socket               # Import socket module
 import os
 import time
-import netifaces as ni
+#import netifaces as ni
 # ni.ifaddresses('eth0')
 # ip = ni.ifaddresses('eth0')[2][0]['addr']
 
 
-host = '192.168.1.150'  # Get local machine name
+host = '35.160.210.159'  # Get local machine name
 port = 12345    
 
          # Create a socket object

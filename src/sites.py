@@ -16,13 +16,23 @@ class SiteData:
         self.jsonD = {}
         cc = lambda: random.randint(0,255)
         self.color = ('#%02X%02X%02X' % (cc(),cc(),cc()))
+        self.max = 1
 
 
     def getCount(self):                 #get the total number of packets
         return self.trafficCount
 
+    def setMax(self, Max):              
+        self.max = Max
+
+    def getMax(self):              
+        return self.max
+
     def getIPlength(self):              #get the total number of local IPs (different devices going to the site)
         return len(self.ips)
+
+    def getSize(self):                 #get the total number of packets
+        return self.trafficSize
 
     def getIPs(self):                   #get the total number of lcoal IPs (gets the IP of devices going to the site) 
         return self.ips                 #This Data will not be kept. Keeping it now for testing reasons
@@ -46,7 +56,10 @@ class SiteData:
         self.timeBucket[x] += 1
 
     def getJSON(self):
-        jsonD = {"color": self.color, "r": self.trafficSize, "name": self.siteName} 
+        radius = (int(self.trafficSize)*70)/int(self.max)
+        if(radius < 1):
+            radius = 1
+        jsonD = {"color": self.color, "r": radius, "name": self.siteName} 
         return jsonD
 
     def __str__(self):
