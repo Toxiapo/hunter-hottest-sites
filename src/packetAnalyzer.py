@@ -48,9 +48,7 @@ def examinePacket(pkt):
             if(Max < d[destIP].getSize()):
             	Max = d[destIP].getSize()
             	for key in d:
-            		d[key].setMax(Max)
-            	
-            
+            		d[key].setMax(Max)	
 
         except socket.herror as e:
             pass
@@ -69,7 +67,7 @@ def examinePacket(pkt):
 
 
     if(int(time.time()) % 11 == 0 and trigger == True):
-        print "Writting to json"
+        #print "Writting to json"
         writeJson(d)
         trigger = False
         

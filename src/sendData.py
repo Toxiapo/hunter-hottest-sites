@@ -7,7 +7,7 @@ import time
 # ip = ni.ifaddresses('eth0')[2][0]['addr']
 
 
-host = '35.160.210.159'  # Get local machine name
+host = '24.45.174.47'  # Get local machine name
 port = 12345    
 
          # Create a socket object
@@ -18,13 +18,14 @@ def startSend(s):
     s.sendall(data)
     f.close()
     s.close()
-    print "sending..."
+    print "Data Sent!"
 
 
 def client():
     try:
         s = socket.socket()
         #s.bind((ip,0))
+        print "Trying to connect to host..."
         s.connect((host, port))
         startSend(s)
     except socket.error:

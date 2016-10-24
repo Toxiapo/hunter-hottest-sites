@@ -17,6 +17,7 @@ class SiteData:
         cc = lambda: random.randint(0,255)
         self.color = ('#%02X%02X%02X' % (cc(),cc(),cc()))
         self.max = 1
+        self.radius = 0
 
 
     def getCount(self):                 #get the total number of packets
@@ -24,6 +25,9 @@ class SiteData:
 
     def setMax(self, Max):              
         self.max = Max
+
+    def setRadius(self, radius):
+        self.radius = radius
 
     def getMax(self):              
         return self.max
@@ -56,12 +60,13 @@ class SiteData:
         self.timeBucket[x] += 1
 
     def getJSON(self):
-        radius = (int(self.trafficSize)*70)/int(self.max)
-        if(radius < 1):
-            radius = 1
-        if (radius < 60):
-            radius+=10
-        jsonD = {"color": self.color, "r": radius, "name": self.siteName} 
+        # radius = (int(self.trafficSize)*70)/int(self.max)
+        # if(radius < 1):
+        #     radius = 1
+        # if (radius < 50):
+        #     radius+=20
+
+        jsonD = {"color": self.color, "r": self.radius, "name": self.siteName} 
         return jsonD
 
     def __str__(self):

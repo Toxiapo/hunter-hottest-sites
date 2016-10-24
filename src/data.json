@@ -1,14 +1,10 @@
-[{"color": "#6DC33B", "r": 43, "name": "wilderssecurity.com"},
-{"color": "#F76990", "r": 13, "name": "wordpress.com"},
-{"color": "#F5FD62", "r": 28, "name": "google.com"},
-{"color": "#3744C3", "r": 30, "name": "cloudfront.net"},
-{"color": "#C4164E", "r": 62, "name": "fbcdn.net"},
-{"color": "#E79F6A", "r": 11, "name": "lastpass.com"},
-{"color": "#F2DC3A", "r": 34, "name": "amazonaws.com"},
-{"color": "#99EDB8", "r": 11, "name": "spotify.com"},
-{"color": "#F6DB77", "r": 70, "name": "facebook.com"},
-{"color": "#DE3485", "r": 11, "name": "teamviewer.com"},
-{"color": "#4350E7", "r": 14, "name": "vps-10.com"},
-{"color": "#6E8B57", "r": 11, "name": "mcast.net"},
-{"color": "#65C12D", "r": 13, "name": "linkedin.com"}
+[{"color": "#19AAB2", "r": 60, "name": "cuny.edu"},
+{"color": "#1CF2F7", "r": 30, "name": "google.com"},
+{"color": "#748EC5", "r": 110, "name": "optonline.net"},
+{"color": "#932BE1", "r": 22, "name": "cloudfront.net"},
+{"color": "#F0F82B", "r": 21, "name": "lastpass.com"},
+{"color": "#D81624", "r": 43, "name": "amazonaws.com"},
+{"color": "#BBAF05", "r": 24, "name": "spotify.com"},
+{"color": "#1539D5", "r": 35, "name": "facebook.com"},
+{"color": "#13B5B5", "r": 26, "name": "questionpoint.org"}
 ]
