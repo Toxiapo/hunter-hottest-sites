@@ -31,9 +31,11 @@ def examinePacket(pkt):
             destIP = socket.gethostbyaddr(destIP)[0]    #Converts IP to hostname (if it exists)
             destIP = destIP.split('.',destIP.count('.')-1)[-1]
 
-            if(destIP == "akamaitechnologies.com" or destIP == "1e100.net" or destIP == "broadcasthost"):
+            if(destIP == "akamaitechnologies.com" or destIP == "1e100.net" or destIP == "broadcasthost" or destIP = "mcast.net" or destIP == "hosted-by-100tb.com"):
             	return
 
+            if (destIP == "fbcdn.net"):
+            	destIP = "facebook.com"
             if not destIP in d:                         #Creates a new instance of the class, adds it to a dictionary (d), and the hostname is the key
                 d[destIP] = SiteData(destIP)
                 d[destIP].setMax(Max)

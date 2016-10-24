@@ -59,6 +59,8 @@ class SiteData:
         radius = (int(self.trafficSize)*70)/int(self.max)
         if(radius < 1):
             radius = 1
+        if (radius < 60):
+            radius+=10
         jsonD = {"color": self.color, "r": radius, "name": self.siteName} 
         return jsonD
 
