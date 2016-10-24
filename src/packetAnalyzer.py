@@ -31,7 +31,7 @@ def examinePacket(pkt):
             destIP = socket.gethostbyaddr(destIP)[0]    #Converts IP to hostname (if it exists)
             destIP = destIP.split('.',destIP.count('.')-1)[-1]
 
-            if(destIP == "akamaitechnologies.com" or destIP == "1e100.net" or destIP == "broadcasthost" or destIP = "mcast.net" or destIP == "hosted-by-100tb.com"):
+            if(destIP == "akamaitechnologies.com" or destIP == "1e100.net" or destIP == "broadcasthost" or destIP == "mcast.net" or destIP == "hosted-by-100tb.com"):
             	return
 
             if (destIP == "fbcdn.net"):
