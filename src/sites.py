@@ -1,11 +1,14 @@
 
 import random
+import time
 
 class SiteData:
     def __init__(self, site):
         self.siteName = site
         self.ips = []
         self.trafficSize = 0
+        self.firstSeen = time.strftime('%l:%M%p')
+        self.lastSeen = 0
         self.timeBucket = {}                    #Creates an empty dictionary to keep packet count by time
         for i in xrange(0,24):                  #Creates 23 entries on dictionary, each index will be a time
             if i < 10:                             
@@ -18,7 +21,11 @@ class SiteData:
         self.color = ('#%02X%02X%02X' % (cc(),cc(),cc()))
         self.max = 1
         self.radius = 0
+        self.randomColor = True
+        self.serverIP = ''
 
+    def setLastSeen(self):
+        self.lastSeen = time.strftime('%l:%M%p')
 
     def getCount(self):                 #get the total number of packets
         return self.trafficCount
@@ -26,11 +33,23 @@ class SiteData:
     def setMax(self, Max):              
         self.max = Max
 
+    def setServerIP(self,serverIP):
+        self.serverIP = serverIP
+
     def setRadius(self, radius):
         self.radius = radius
 
+    def setColor(self, color):         #manually set the site's color.
+        self.color = color
+
     def getMax(self):              
         return self.max
+
+    def getRandomColor(self):            #Check if this site had a random color generated 
+        return self.randomColor
+
+    def setRandomColor(self):             #Changes to false when a color is set. To indicate it no longer contains a random color
+        self.randomColor = False
 
     def getIPlength(self):              #get the total number of local IPs (different devices going to the site)
         return len(self.ips)
@@ -66,7 +85,7 @@ class SiteData:
         # if (radius < 50):
         #     radius+=20
 
-        jsonD = {"color": self.color, "r": self.radius, "name": self.siteName} 
+        jsonD = {"color": self.color, "r": self.radius, "name": self.siteName, "packets": self.trafficCount, "size": sizeof_fmt(self.trafficSize), "users": len(self.ips), "firstSeen": self.firstSeen, "lastSeen": self.lastSeen, "ServerIP": self.serverIP} 
         return jsonD
 
     def __str__(self):

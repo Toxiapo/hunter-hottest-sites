@@ -12,11 +12,12 @@ def writeJson(d):  #not yet implemented
 	size = len(d)
 	for key in sorted(d, key = lambda name: d[name].getSize()):
 		#print "dividing  100/",size 
-		d[key].setRadius((100/size)+10)
+		d[key].setRadius((100/size)+25)
 		size -=1
 		
 		#print d[key].getName(), d[key].getSize()
 	with open('data.json', 'w') as fp:
+
 		fp.write("[")
 		for key in d:
 			json.dump(d[key].getJSON(), fp)
@@ -24,8 +25,9 @@ def writeJson(d):  #not yet implemented
 				fp.write(',')
 			fp.write('\n')
 		fp.write("]")
+	print "wrote json"
 	fp.close()
-	client()
+	client()   #calls the client script to send the file
 
 	# s = socket.socket()         # Create a socket object
 	# host = '146.95.219.133' # Get local machine name
