@@ -30,7 +30,7 @@ def examinePacket(pkt):
         srcIP = str(pkt.ip.src)     #strips the source of the packet (IP of device)
         traffic = int(pkt.length)   #strips the length of the packet
 
-        if (destIP[0:3] == "146"):  #Filters anything with a 146 address on the first octect (These are hunter's network addresses)
+        if (destIP[0:3] == "146" or destIP == "24.45.174.47"):  #Filters anything with a 146 address on the first octect (These are hunter's network addresses) AND my home address
             return
 
         #destIP.count('.')-2)[-1] will get 2 dots. example, it will get xxx.yyy.zzz
@@ -57,15 +57,35 @@ def examinePacket(pkt):
                 for key in d:
                     d[key].setMax(Max)  
 
-            if(d[destIP].getName() == "Facebook" and d[destIP].getRandomColor() == True):
-                print "set color on ", d[destIP]
-                d[destIP].setColor('3b5998')   #Sets the color
-                d[destIP].setRandomColor()     #Sets the trigger to false informing the color was already set
+            #Below old coloring approach, it works
 
-            if(d[destIP].getName() == "Netflix" and d[destIP].getRandomColor() == True):
-                print "set color on ", d[destIP]
-                d[destIP].setColor('B9090B')
+            # if(d[destIP].getName() == "Facebook" and d[destIP].getRandomColor() == True):
+            #     print "set color on ", d[destIP].getName()
+            #     d[destIP].setColor('3b5998')   #Sets the color
+            #     d[destIP].setRandomColor()     #Sets the trigger to false informing the color was already set
+
+            # if(d[destIP].getName() == "Netflix" and d[destIP].getRandomColor() == True):
+            #     print "set color on ", d[destIP]
+            #     d[destIP].setColor('B9090B')
+            #     d[destIP].setRandomColor()
+
+            # if(d[destIP].getName() == "Spotify" and d[destIP].getRandomColor() == True):
+            #     print "set color on ", d[destIP].getName()
+            #     d[destIP].setColor('84bd00')
+            #     d[destIP].setRandomColor()
+
+            # if(d[destIP].getName() == "Snapchat" and d[destIP].getRandomColor() == True):
+            #     print "set color on ", d[destIP].getName()
+            #     d[destIP].setColor('fffc00')
+            #     d[destIP].setRandomColor()
+
+                #New coloring approach
+
+            if(colorsDic.has_key(destIP) and d[destIP].getRandomColor() == True):
+                print "set color on ", d[destIP].getName()
+                d[destIP].setColor(colorsDic[d[destIP].getName()])
                 d[destIP].setRandomColor()
+
         else:
             try:
                 destIP = socket.gethostbyaddr(destIP)[0]    #Converts IP to hostname (if it exists)
@@ -79,6 +99,9 @@ def examinePacket(pkt):
                 
                 if (destIP == "nflxvideo.net"):
                     destIP = "Netflix"
+
+                if (destIP == "spotify.com"):
+                    destIP = "Spotify"
                 
                 if not destIP in d:                         #Creates a new instance of the class, adds it to a dictionary (d), and the hostname is the key
                     d[destIP] = SiteData(destIP)
@@ -95,7 +118,12 @@ def examinePacket(pkt):
                 if(Max < d[destIP].getSize()):           #All the sites need to who has the max length (in bytes), and have this value. I forgot why...
                 	Max = d[destIP].getSize()            #I think because in the future we will represent radius as a ratio of the max length. Havent found the right function...
                 	for key in d:                        #to do this without making websites with small traffic size extremely small compared to the max. 
-                		d[key].setMax(Max)	
+                		d[key].setMax(Max)
+
+                if(colorsDic.has_key(destIP) and d[destIP].getRandomColor() == True):
+                    print "set color on ", d[destIP].getName()
+                    d[destIP].setColor(colorsDic[d[destIP].getName()])
+                    d[destIP].setRandomColor()
 
             except socket.herror as e:    #if socket does not find a host for the given IP.
                 pass
