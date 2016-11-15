@@ -7,7 +7,7 @@ import time
 # ip = ni.ifaddresses('eth0')[2][0]['addr']
 
 
-host = '24.45.174.47'  # Get local machine name
+host = '35.163.175.121'  # Get local machine name
 port = 12345    
 
          # Create a socket object

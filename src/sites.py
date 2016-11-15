@@ -29,7 +29,7 @@ class SiteData:
         self.randomColor = True
         self.serverIP = ''
         self.lowerbound = 25
-        self.upperbound = 120
+        self.upperbound = 100
         self.maxIP = 0
         self.maxPackets = 0
 

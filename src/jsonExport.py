@@ -32,8 +32,8 @@ def writeJson(d):  #not yet implemented
 	# 	size -=1
 
 		#print d[key].getName(), d[key].getSize()
+	#index = 0
 	with open('data.json', 'w') as fp:
-
 		fp.write("[")
 		for key in d:
 			json.dump(d[key].getJSON(), fp)
