@@ -9,12 +9,28 @@ from sendData import *
 
 def writeJson(d):  #not yet implemented
 
-	size = len(d)
-	for key in sorted(d, key = lambda name: d[name].getSize()):
-		#print "dividing  100/",size 
-		d[key].setRadius((100/size)+25)
-		size -=1
-		
+	# size = len(d)
+	# for key in sorted(d, key = lambda name: d[name].getSize()):
+	# 	d[key].setRT(150*(math.log(1+100,2)/math.log(1+1000,2)) )
+	# 	#print "dividing  100/",size 
+
+
+	# 	d[key].setRT((100/size)+25)
+	# 	size -=1
+
+	# size = len(d)
+	# for key in sorted(d, key = lambda name: d[name].getCount()):
+	# 	if(size == len(d)):
+	# 		for key in d:
+	# 			d[key].setMaxIP((100/size)+25)
+	# 	size -=1
+
+	# size = len(d)
+	# for key in sorted(d, key = lambda name: d[name].getIPlength()):
+	# 	#print "dividing  100/",size 
+	# 	d[key].setRU((100/size)+25)
+	# 	size -=1
+
 		#print d[key].getName(), d[key].getSize()
 	with open('data.json', 'w') as fp:
 

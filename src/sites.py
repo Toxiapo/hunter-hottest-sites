@@ -1,6 +1,9 @@
 
 import random
 import time
+import math
+from math import *
+
 
 class SiteData:
     def __init__(self, site):
@@ -20,9 +23,15 @@ class SiteData:
         cc = lambda: random.randint(0,255)
         self.color = ('#%02X%02X%02X' % (cc(),cc(),cc()))
         self.max = 1
-        self.radius = 0
+        self.rt = 0
+        self.ru = 0
+        self.rp = 0
         self.randomColor = True
         self.serverIP = ''
+        self.lowerbound = 25
+        self.upperbound = 120
+        self.maxIP = 0
+        self.maxPackets = 0
 
     def setLastSeen(self):
         self.lastSeen = time.strftime('%l:%M%p')
@@ -33,11 +42,23 @@ class SiteData:
     def setMax(self, Max):              
         self.max = Max
 
+    def setMaxIP(self,Max):
+        self.maxIP = Max
+
+    def setMaxPackets(self,Max):
+        self.maxPackets = Max
+
     def setServerIP(self,serverIP):
         self.serverIP = serverIP
 
-    def setRadius(self, radius):
-        self.radius = radius
+    def setRT(self, radius):
+        self.rt = radius
+
+    def setRU(self, radius):
+        self.ru = radius
+
+    def setRP(self, radius):
+        self.rp = radius
 
     def setColor(self, color):         #manually set the site's color.
         self.color = color
@@ -52,7 +73,7 @@ class SiteData:
         self.randomColor = False
 
     def getIPlength(self):              #get the total number of local IPs (different devices going to the site)
-        return len(self.ips)
+        return int(len(self.ips))
 
     def getSize(self):                 #get the total number of packets
         return self.trafficSize
@@ -65,6 +86,9 @@ class SiteData:
 
     def incrementCount(self):           #Increment packet count for a site
         self.trafficCount += 1
+
+    def getCount(self):
+        return self.trafficCount
 
     def incrementTraffic(self, packetLength):   #Increment traffic length for a site
         self.trafficSize += packetLength
@@ -84,8 +108,11 @@ class SiteData:
         #     radius = 1
         # if (radius < 50):
         #     radius+=20
+        self.rt = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficSize,2)/math.log(1+ self.max,2))  )
+        self.ru = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ len(self.ips),2)/math.log(1+ self.maxIP,2))  )
+        self.rp =   (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficCount,2)/math.log(1+ self.maxPackets,2))  
 
-        jsonD = {"color": self.color, "r": self.radius, "name": self.siteName, "packets": self.trafficCount, "size": sizeof_fmt(self.trafficSize), "users": len(self.ips), "firstSeen": self.firstSeen, "lastSeen": self.lastSeen, "ServerIP": self.serverIP} 
+        jsonD = {"color": self.color, "rt": self.rt, "ru": self.ru,"rp": self.rp, "name": self.siteName, "packets": self.trafficCount, "size": sizeof_fmt(self.trafficSize), "users": len(self.ips), "firstSeen": self.firstSeen, "lastSeen": self.lastSeen, "ServerIP": self.serverIP} 
         return jsonD
 
     def __str__(self):

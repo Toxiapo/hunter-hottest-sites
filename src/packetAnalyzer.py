@@ -10,6 +10,8 @@ from knownStuff import *
 
 global Max
 Max = 0
+maxIP = 0
+maxPackets = 0
 
 
 trigger = True
@@ -24,6 +26,8 @@ def examinePacket(pkt):
     global destIP
     #destIP = " "
     global Max
+    global maxIP
+    global maxPackets
     try:
         destIP = str(pkt.ip.dst)    #strips the destination of the packet (in IP format)
         serverIP = destIP
@@ -56,6 +60,18 @@ def examinePacket(pkt):
                 Max = d[destIP].getSize()
                 for key in d:
                     d[key].setMax(Max)  
+                
+            if(maxIP < d[destIP].getIPlength()):
+                maxIP = d[destIP].getIPlength()
+
+            for key in d:
+                d[key].setMaxIP(maxIP)
+
+            if(maxPackets < d[destIP].getCount()):
+                maxPackets = d[destIP].getCount()
+
+            for key in d:
+                d[destIP].setMaxPackets(maxPackets)
 
             #Below old coloring approach, it works
 
@@ -114,6 +130,17 @@ def examinePacket(pkt):
                 d[destIP].setMax(Max)
                 d[destIP].setLastSeen()
 
+                if(maxIP < d[destIP].getIPlength()):
+                    maxIP = d[destIP].getIPlength()
+
+                for key in d:
+                    d[key].setMaxIP(maxIP)
+
+                if(maxPackets < d[destIP].getCount()):
+                    maxPackets = d[destIP].getCount()
+
+                for key in d:
+                    d[destIP].setMaxPackets(maxPackets)
 
                 if(Max < d[destIP].getSize()):           #All the sites need to who has the max length (in bytes), and have this value. I forgot why...
                 	Max = d[destIP].getSize()            #I think because in the future we will represent radius as a ratio of the max length. Havent found the right function...

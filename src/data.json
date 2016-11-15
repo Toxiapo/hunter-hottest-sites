@@ -1,10 +1,14 @@
-[{"color": "#19AAB2", "r": 60, "name": "cuny.edu"},
-{"color": "#1CF2F7", "r": 30, "name": "google.com"},
-{"color": "#748EC5", "r": 110, "name": "optonline.net"},
-{"color": "#932BE1", "r": 22, "name": "cloudfront.net"},
-{"color": "#F0F82B", "r": 21, "name": "lastpass.com"},
-{"color": "#D81624", "r": 43, "name": "amazonaws.com"},
-{"color": "#BBAF05", "r": 24, "name": "spotify.com"},
-{"color": "#1539D5", "r": 35, "name": "facebook.com"},
-{"color": "#13B5B5", "r": 26, "name": "questionpoint.org"}
+[{"users": 1, "color": "#84bd00", "lastSeen": " 7:37PM", "firstSeen": " 7:37PM", "size": " 16KB", "rt": 115.2121168124498, "ru": 51.68118696880717, "rp": 120.0, "name": "Spotify", "packets": 73, "ServerIP": "23.92.108.229"},
+{"users": 1, "color": "#DC139F", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "114B", "rt": 56.64588313312871, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "ge.com", "packets": 1, "ServerIP": "3.122.112.141"},
+{"users": 1, "color": "#2E96ED", "lastSeen": " 7:39PM", "firstSeen": " 7:39PM", "size": "138B", "rt": 58.908668486267665, "ru": 51.68118696880717, "rp": 19.14856988039258, "name": "direct-adsl.nl", "packets": 1, "ServerIP": "77.170.247.148"},
+{"users": 1, "color": "#BC9E04", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "160B", "rt": 60.66275133641791, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "net.ua", "packets": 1, "ServerIP": "77.122.141.114"},
+{"users": 1, "color": "#EE7A74", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "153B", "rt": 60.13207791906861, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "bbtec.net", "packets": 1, "ServerIP": "220.47.189.241"},
+{"users": 1, "color": "#90F67C", "lastSeen": " 7:37PM", "firstSeen": " 7:37PM", "size": "  1KB", "rt": 83.85094204553421, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "prserv.net", "packets": 1, "ServerIP": "32.102.4.71"},
+{"users": 1, "color": "#498F08", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "  2KB", "rt": 93.40014168462457, "ru": 51.68118696880717, "rp": 75.50211650966077, "name": "cloudfront.net", "packets": 14, "ServerIP": "54.192.48.232"},
+{"users": 4, "color": "#fffc00", "lastSeen": " 7:39PM", "firstSeen": " 7:37PM", "size": " 12KB", "rt": 112.50449137731945, "ru": 120.0, "rp": 102.37195716764727, "name": "Snapchat", "packets": 52, "ServerIP": "173.194.175.188"},
+{"users": 1, "color": "#8288C5", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "134B", "rt": 58.56008354141735, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "webminders.com", "packets": 1, "ServerIP": "66.165.68.120"},
+{"users": 1, "color": "#634FEF", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "  1KB", "rt": 83.85094204553421, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "kabel-deutschland.de", "packets": 1, "ServerIP": "77.22.188.1"},
+{"users": 1, "color": "#52299B", "lastSeen": " 7:37PM", "firstSeen": " 7:37PM", "size": "155B", "rt": 60.28612116828288, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "myvzw.com", "packets": 1, "ServerIP": "97.164.36.118"},
+{"users": 2, "color": "#3b5998", "lastSeen": " 7:39PM", "firstSeen": " 7:37PM", "size": " 23KB", "rt": 120.0, "ru": 81.91274333831825, "rp": 120.0, "name": "Facebook", "packets": 111, "ServerIP": "31.13.80.5"},
+{"users": 1, "color": "#0553F3", "lastSeen": " 7:38PM", "firstSeen": " 7:38PM", "size": "138B", "rt": 58.908668486267665, "ru": 51.68118696880717, "rp": 19.32537261077333, "name": "iol.cz", "packets": 1, "ServerIP": "90.182.26.53"}
 ]

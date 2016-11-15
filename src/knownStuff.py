@@ -13,7 +13,10 @@ knownSitesDic["173.194"] = "Snapchat"
 knownSitesDic["66.211"] = "Ebay"
 knownSitesDic["72.21"] = "Amazon"
 knownSitesDic["128.228"] = "Cuny"
+knownSitesDic["52.223"] = "Twitch"
 #128.228
+
+
 
 colorsDic["Facebook"] = "#3b5998"
 colorsDic["Netflix"] = "#B9090B"
@@ -25,6 +28,9 @@ colorsDic["yahoo.com"] = "#7B0099"
 colorsDic["lastpass.com"] = "#AF0809"
 colorsDic["apple.com"] = "#999999"
 colorsDic["Youtube"] = "#bb0000"
+colorsDic["Twitch"] = "#6441a5"
+
+#6441a5
 
 
 

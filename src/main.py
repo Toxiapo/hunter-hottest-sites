@@ -1,4 +1,4 @@
-import threading
+# import threading
 import time
 from packetAnalyzer import *
 import multiprocessing
@@ -18,7 +18,7 @@ def main():
     # p.terminate()
     # p.join()
 
-    # p2 = multiprocessing.Process(target=startCaptureDNS, name="startCaptureDNS") 
+    # p2 = multiprocessing.Process(target=startWritting, name="startWritting") 
     # p2.start()
 
 
