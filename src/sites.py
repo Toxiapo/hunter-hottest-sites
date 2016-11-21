@@ -32,6 +32,7 @@ class SiteData:
         self.upperbound = 100
         self.maxIP = 0
         self.maxPackets = 0
+        self.weight = 0
 
     def setLastSeen(self):
         self.lastSeen = time.strftime('%l:%M%p')
@@ -59,6 +60,18 @@ class SiteData:
 
     def setRP(self, radius):
         self.rp = radius
+
+    def getRT(self):
+        return self.rt
+
+    def getRU(self):
+        return self.ru
+
+    def getRP(self):
+        return self.rp
+
+    def getWeight(self):
+        return self.weight
 
     def setColor(self, color):         #manually set the site's color.
         self.color = color
@@ -102,16 +115,14 @@ class SiteData:
         x = x[0:2]
         self.timeBucket[x] += 1
 
-    def getJSON(self):
-        # radius = (int(self.trafficSize)*70)/int(self.max)
-        # if(radius < 1):
-        #     radius = 1
-        # if (radius < 50):
-        #     radius+=20
+
+    def setWeights(self):
         self.rt = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficSize,2)/math.log(1+ self.max,2))  )
         self.ru = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ len(self.ips),2)/math.log(1+ self.maxIP,2))  )
         self.rp =   (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficCount,2)/math.log(1+ self.maxPackets,2))  
+        self.weight = self.rt + self.ru + self.rp
 
+    def getJSON(self):
         jsonD = {"color": self.color, "rt": self.rt, "ru": self.ru,"rp": self.rp, "name": self.siteName, "packets": self.trafficCount, "size": sizeof_fmt(self.trafficSize), "users": len(self.ips), "firstSeen": self.firstSeen, "lastSeen": self.lastSeen, "ServerIP": self.serverIP} 
         return jsonD
 

@@ -20,7 +20,7 @@ global endTime
 
 d = {}
 
-
+#17.249.121.246
 def examinePacket(pkt):
     global trigger
     global destIP
@@ -34,7 +34,7 @@ def examinePacket(pkt):
         srcIP = str(pkt.ip.src)     #strips the source of the packet (IP of device)
         traffic = int(pkt.length)   #strips the length of the packet
 
-        if (destIP[0:3] == "146" or destIP == "24.45.174.47"):  #Filters anything with a 146 address on the first octect (These are hunter's network addresses) AND my home address
+        if (destIP[0:3] == "146" or destIP == "17.249.121.246" ):  #Filters anything with a 146 address on the first octect (These are hunter's network addresses) AND my home address
             return
 
         #destIP.count('.')-2)[-1] will get 2 dots. example, it will get xxx.yyy.zzz

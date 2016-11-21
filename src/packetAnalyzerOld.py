@@ -180,21 +180,6 @@ def examinePacketDNS(pkt):
     except AttributeError as e:
         pass
 
-
-
-        # for key in d:
-        #     print d[key]
-        #     print "total sites seen: ", len(d)
-        #     print "-------------------------------------------------------"
-
-    # if(int(time.time()) % 11 == 0 and trigger == True):
-    #     #print "Writting to json"
-    #     writeJson(d)
-    #     trigger = False
-        
-    # if(int(time.time()) % 13 == 0):
-    #     trigger = True
-
 def startCapture():
     capture = pyshark.LiveCapture(interface='en0', only_summaries=False)    #creates a new pyshark object with a specific interface and desired parameters 
     capture.apply_on_packets(examinePacket)                                 #sends every packet to the examinePAcket function above to examine them
