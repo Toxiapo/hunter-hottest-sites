@@ -29,7 +29,7 @@ class SiteData:
         self.randomColor = True
         self.serverIP = ''
         self.lowerbound = 25
-        self.upperbound = 100
+        self.upperbound = 125
         self.maxIP = 0
         self.maxPackets = 0
         self.weight = 0
@@ -119,8 +119,8 @@ class SiteData:
     def setWeights(self):
         self.rt = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficSize,2)/math.log(1+ self.max,2))  )
         self.ru = (  (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ len(self.ips),2)/math.log(1+ self.maxIP,2))  )
-        self.rp =   (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficCount,2)/math.log(1+ self.maxPackets,2))  
-        self.weight = self.rt + self.ru + self.rp
+        self.rp = ( (self.lowerbound + (self.upperbound - self.lowerbound))*(math.log(1+ self.trafficCount,2)/math.log(1+ self.maxPackets,2))  )
+        #self.weight = self.rt + self.ru + self.rp
 
     def getJSON(self):
         jsonD = {"color": self.color, "rt": self.rt, "ru": self.ru,"rp": self.rp, "name": self.siteName, "packets": self.trafficCount, "size": sizeof_fmt(self.trafficSize), "users": len(self.ips), "firstSeen": self.firstSeen, "lastSeen": self.lastSeen, "ServerIP": self.serverIP} 
